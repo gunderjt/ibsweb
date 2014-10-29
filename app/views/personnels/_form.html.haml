@@ -1,0 +1,49 @@
+= form_for @personnel do |f|
+  - if @personnel.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@personnel.errors.count, "error")} prohibited this personnel from being saved:"
+      %ul
+        - @personnel.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :uname
+    = f.text_field :uname
+  .field
+    = f.label :mailing_list
+    = f.check_box :mailing_list
+  .field
+    = f.label :formally_affiliated
+    = f.check_box :formally_affiliated
+  .field
+    = f.label :retiree
+    = f.check_box :retiree
+  .field
+    = f.label :rostered
+    = f.check_box :rostered
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :salutation
+    = f.text_field :salutation
+  .field
+    = f.label :notes
+    = f.text_area :notes
+  .field
+    = f.label :research_interests
+    = f.text_area :research_interests
+  .field
+    = f.label :skills_expertise
+    = f.text_area :skills_expertise
+  .field
+    = f.label :bio
+    = f.text_area :bio
+  .field
+    = f.label :employee_id
+    = f.text_field :employee_id
+  .actions
+    = f.submit 'Save'

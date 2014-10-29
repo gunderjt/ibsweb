@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  personnel_id: 1
+  degree_type_id: 1
+  year_awarded: MyString
+  in_progress: false
+  university: MyString
+  department: MyString
+
+two:
+  personnel_id: 1
+  degree_type_id: 1
+  year_awarded: MyString
+  in_progress: false
+  university: MyString
+  department: MyString
