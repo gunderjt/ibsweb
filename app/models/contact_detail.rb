@@ -19,10 +19,6 @@
 #  updated_at   :datetime
 #
 
-require 'test_helper'
-
-class ContactDetailsTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class ContactDetail < ActiveRecord::Base
+  belongs_to :personnel
 end

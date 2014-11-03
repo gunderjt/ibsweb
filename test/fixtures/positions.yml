@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: positions
+#
+#  id            :integer          not null, primary key
+#  title         :string(255)
+#  display_title :string(255)
+#  rank          :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

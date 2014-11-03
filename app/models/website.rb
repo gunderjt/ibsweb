@@ -8,12 +8,12 @@
 #  display_name    :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  personnel_id    :integer
 #
 
-require 'test_helper'
+class Website < ActiveRecord::Base
+  belongs_to :personnel
+  belongs_to :website_type
 
-class WebsitesTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  validates :url, presence: :true
 end
