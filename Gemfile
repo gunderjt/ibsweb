@@ -53,3 +53,6 @@ gem "haml-rails"
 gem "devise"
 gem "nested_form"
 gem 'annotate', '~> 2.6.5'
+
+gem 'rspec'
+gem 'cucumber'
