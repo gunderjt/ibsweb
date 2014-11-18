@@ -48,11 +48,22 @@ group :development do
   gem "pry-byebug"
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem "factory_girl_rails"
+end
+
+group :test do
+  gem "faker"
+  gem "capybara"
+  gem "database_cleaner"
+  gem "launchy"
+  gem "selenium-webdriver"
+  gem 'cucumber'
+end
+
 gem "awesome_print"
 gem "haml-rails"
 gem "devise"
 gem "nested_form"
 gem 'annotate', '~> 2.6.5'
-
-gem 'rspec'
-gem 'cucumber'
