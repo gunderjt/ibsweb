@@ -31,10 +31,14 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (4.0.0.1)
+      execjs
     awesome_print (1.2.0)
     bcrypt (3.1.7)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.1.0)
+      sass (~> 3.2)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -188,7 +192,9 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 2.6.5)
+  autoprefixer-rails
   awesome_print
+  bootstrap-sass
   coffee-rails (~> 4.0.0)
   cucumber
   devise
