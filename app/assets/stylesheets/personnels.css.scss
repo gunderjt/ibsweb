@@ -10,7 +10,16 @@
 }
 
 .fields{
-
+  border: 1px solid black;
+  padding: 10px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }
-.fields:nth-child(even) {background: #CCC}
-.fields:nth-child(odd) {background: #FFF}
+
+.add_nested_fields{
+  margin-bottom: 2em;
+  display: block;
+}
+// .fields:nth-child(even) {background: #CCC}
+// .fields:nth-child(odd) {background: #FFF}
