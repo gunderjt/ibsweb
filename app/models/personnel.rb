@@ -30,9 +30,9 @@ class Personnel < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  accepts_nested_attributes_for :employment_records
-  accepts_nested_attributes_for :academic_degrees
-  accepts_nested_attributes_for :contact_details
-  accepts_nested_attributes_for :contact_infos
-  accepts_nested_attributes_for :websites
+  accepts_nested_attributes_for :employment_records, allow_destroy: true
+  accepts_nested_attributes_for :academic_degrees, reject_if: lambda { |a| a[:year_awarded].blank? and (a[:in_progress] == 0) }, allow_destroy: true
+  accepts_nested_attributes_for :contact_details, reject_if: lambda { |a| a[:job_title] and a[:organization]}, allow_destroy: true
+  accepts_nested_attributes_for :contact_infos, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :websites, reject_if: lambda { |a| a[:url].blank? }, allow_destroy: true
 end
