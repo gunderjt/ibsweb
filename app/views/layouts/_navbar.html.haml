@@ -1,0 +1,68 @@
+.navigation 
+  .section
+    %nav{role: "navigation", class: "navbar"}
+      .container-fluid
+        / .navbar-header
+        /   %button{type: "button", class: "navbar-toggle collapsed", data: {toggle: "collapse", target:"#bs-example-navbar-collapse-1"}}
+        /     %span{class: "sr-only"}Toggle navigation
+        /     %span{class: "icon-bar"}
+        /     %span{class: "icon-bar"}
+        /     %span{class: "icon-bar"}
+        /   = link_to root_path do
+        /     %span.glyphicon.glyphicon-home
+
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              = link_to root_path do
+                %span.glyphicon.glyphicon-home
+            %li.dropdown
+              = link_to about_path do
+                About
+                %span.caret
+              %ul.dropdown-menu{role: "menu"}
+                %li
+                  = link_to "About", about_path
+                %li
+                  = link_to "Contact", contact_path
+                %li
+                  = link_to "Visit", visit_path
+            %li.dropdown
+              = link_to "#" do
+                News
+                %span.caret
+              %ul.dropdown-menu{role: "menu"}
+                %li
+                  = link_to "IBS News", "#"
+                %li
+                  = link_to "News Archive", "#"
+                %li
+                  = link_to "News Letter", "#"
+                %li
+                  = link_to "Social Gatherings", "#"
+            %li.dropdown
+              = link_to "#" do
+                Colloquia
+                %span.caret
+              %ul.dropdown-menu{role: "menu"}
+                %li
+                  = link_to "Upcoming Colloquia", "#"
+                %li
+                  = link_to "Past Colloquia", "#"
+                %li
+                  = link_to "Video Links", "#"
+                %li
+                  = link_to "Room Reservations", "#"
+            %li.dropdown
+              = link_to "#" do
+                Publications
+                %span.caret
+              %ul.dropdown-menu{role: "menu"}
+                %li
+                  = link_to "Publications", "#"
+                %li
+                  = link_to "Working Papers", "#"
+            %li
+              = link_to "Graduate Training", "#"
+            %li
+              = link_to "Computing & Research Services", "#"
