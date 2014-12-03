@@ -1,3 +1,62 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#header {
+  background-color: #000;
+  h1 a{
+    position: absolute;
+    background: #000 image-url("banner_black_ibs.png") top left no-repeat;
+    left: 10px;
+    top: 0;
+    width: 960px;
+    height: 120px;
+  }
+}
+
+nav.navbar{
+  margin-bottom: 0;
+}
+.navigation{
+  a{
+    color: #fff;
+  }
+  background: #3a5276;
+  width: 100%;
+  #bs-example-navbar-collapse-1{
+    /*top menu*/
+    ul.nav {
+      > li {
+        color: #fff;
+      }
+      // top level links
+      > li:hover, a:hover {
+        color: #000;
+      }
+      // top level drop down
+      > li.dropdown:hover{
+        ul.dropdown-menu{
+          display:block;
+        }
+      }
+    }
+  }
+}
+#main .section{
+  background-color: #fff;
+  overflow:hidden;
+  min-height: 500px;
+}
+
+.background_gradient{
+  //background: #fff image-url() top left repeat-x;
+  background: rgba(13,56,89,1);
+  background: -moz-linear-gradient(top, rgba(13,56,89,1) 0%, rgba(255,255,255,1) 500px, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(13,56,89,1)), color-stop(500px, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(top, rgba(13,56,89,1) 0%, rgba(255,255,255,1) 500px, rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(top, rgba(13,56,89,1) 0%, rgba(255,255,255,1) 500px, rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(top, rgba(13,56,89,1) 0%, rgba(255,255,255,1) 500px, rgba(255,255,255,1) 100%);
+  background: linear-gradient(to bottom, rgba(13,56,89,1) 0%, rgba(255,255,255,1) 500px, rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d3859', endColorstr='#ffffff', GradientType=0 );
+  padding-top: 6px;
+}

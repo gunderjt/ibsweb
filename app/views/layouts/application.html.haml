@@ -7,7 +7,9 @@
     = csrf_meta_tags
   %body
     = render partial: "layouts/header"
-    .section
-      = yield
+    = render partial: "layouts/navbar"
+    #main.background_gradient
+      .section
+        = yield
     = render partial: "layouts/footer"
 

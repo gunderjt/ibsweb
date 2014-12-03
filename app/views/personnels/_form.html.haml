@@ -5,157 +5,180 @@
       %ul
         - @personnel.errors.full_messages.each do |msg|
           %li= msg
-  %h3.text-center Identifying Info
-  .row
-    .col-md-4.col-md-offset-1
-      .field
-        = f.label :first_name
-        <br>
-        = f.text_field :first_name
-      .field
-        = f.label :last_name
-        <br>
-        = f.text_field :last_name
-      .field
-        = f.label :salutation
-        <br>
-        = f.text_field :salutation
-      .field
-        = f.label :uname, "Identikey Username"
-        <br>
-        = f.text_field :uname
-    .col-md-4.col-md-offset-2
-      .field
-        = f.check_box :mailing_list
-        = f.label :mailing_list, "Add to Mailing List"
-      .field
-        = f.check_box :formally_affiliated
-        = f.label :formally_affiliated, "Person is a grad-student or something"
-      .field
-        = f.check_box :retiree
-        = f.label :retiree, "Person is a retiree of IBS"
-      .field
-        = f.check_box :rostered
-        = f.label :rostered, "Person is officially rostered"
-  %h3.text-center About Personnel
-  .field
-    = f.label :bio
-    <br>
-    = f.text_area :bio
-  .field
-    = f.label :research_interests
-    <br>
-    = f.text_area :research_interests
-  .field
-    = f.label :skills_expertise
-    <br>
-    = f.text_area :skills_expertise
-  .field
-    = f.label :notes
-    <br>
-    = f.text_area :notes
-  %h3.text-center Employee Information
-  .field
-    = f.label :employee_id, "Employee/Staff Id"
-    = f.text_field :employee_id
-  = f.fields_for :employment_records do |er_form|
-    .field
-      = er_form.label :position_id, "Employee's Position"
-      = er_form.collection_select :position_id, Position.order(:title), :id, :title
-    .field
-      = er_form.label :affiliation_id, "Affiliation"
-      = er_form.collection_select :affiliation_id, Affiliation.order(:institute_name), :id, :institute_name
-    .field
-      = er_form.label :start_date, "Started Employment"
-      = er_form.date_select :start_date, order: [:month, :year], start_year: 1995
-    .field
-      = er_form.label :end_date, "End Employment (If any)"
-      = er_form.date_select :end_date, order: [:month, :year], include_blank: true
-    = er_form.link_to_remove "Delete Employee Record"
-  = f.link_to_add "Add another employement record", :employment_records
-  = f.fields_for :websites do |web_form|
-    .field
-      = web_form.label :url
-      = web_form.text_field :url
-    .field
-      = web_form.label :display_name
-      = web_form.text_field :display_name
-    .field
-      = web_form.label :website_type_id, "Type of Website"
-      = web_form.collection_select :website_type_id, WebsiteType.order(:web_type), :id, :web_type
-      = web_form.link_to_remove "Delete Website"
-  = f.link_to_add "Add another website record", :websites
-  = f.fields_for :academic_degrees do |ac_form|
-    .field
-      = ac_form.label :degree_type_id, "Type of Degree"
-      = ac_form.collection_select :degree_type_id, DegreeType.order(:degree_type), :id, :degree_type
-    .field
-      = ac_form.label :year_awarded, "Year Awarded"
-      = ac_form.text_field :year_awarded
-    OR
-    .field
-      = ac_form.check_box :in_progress
-      = ac_form.label :in_progress
-    .field
-      = ac_form.label :university
-      = ac_form.text_field :university
-    .field
-      = ac_form.label :department
-      = ac_form.text_field :department
-    = ac_form.link_to_remove "Delete Academic Degree"
-  = f.link_to_add "Add another academic degree", :academic_degrees
-  = f.fields_for :contact_details do |cd_form|
-    .field
-      = cd_form.label :job_title
-      = cd_form.text_field :job_title
-    .field
-      = cd_form.label :organization
-      = cd_form.text_field :organization
-    .field
-      = cd_form.label :address
-      <br>
-      = cd_form.text_area :address
-    .field
-      = cd_form.label :city
-      = cd_form.text_field :city
-    .field
-      = cd_form.label :state
-      = cd_form.text_field :state
-    .field
-      = cd_form.label :country
-      = cd_form.text_field :country
-    .field
-      = cd_form.label :zipcode
-      = cd_form.text_field :zipcode
-    .field
-      = cd_form.label :phone
-      = cd_form.text_field :phone
-    .field
-      = cd_form.label :email
-      = cd_form.text_field :email
-    .field
-      = cd_form.label :alt_phone
-      = cd_form.text_field :alt_phone
-    .field
-      = cd_form.label :alt_email
-      = cd_form.text_field :alt_email
-    = cd_form.link_to_remove "Delete Contact Details"
-  = f.link_to_add "Add another contact details form", :contact_details
-  = f.fields_for :contact_infos do |ci_form|
-    .field
-      = ci_form.check_box :display
-      = ci_form.label :display
-    .field
-      = ci_form.label :office_number
-      = ci_form.text_field :office_number
-    .field
-      = ci_form.label :phone_number
-      = ci_form.text_field :phone_number
-    .field
-      = ci_form.label :email
-      = ci_form.text_field :email
-    = ci_form.link_to_remove "Delete Contact Info"
+  #rootwizard
+    .navbar
+      .navbar-inner
+        .container
+          %ul.nav.nav-pills
+            %li
+              %a{href: "#tab1", data: {toggle: "tab"}}Person
+            %li
+              %a{href: "#tab2", data: {toggle: "tab"}}About
+            %li
+              %a{href: "#tab3", data: {toggle: "tab"}}Employee Info
+            %li
+              %a{href: "#tab4", data: {toggle: "tab"}}Academic Info
+            %li
+              %a{href: "#tab5", data: {toggle: "tab"}}Contact Info
+    .tab-content
+      #tab1.tab-pane
+        %h3.text-center Identifying Info
+        .row
+          .col-md-4.col-md-offset-1
+            .field
+              = f.label :first_name
+              <br>
+              = f.text_field :first_name
+            .field
+              = f.label :last_name
+              <br>
+              = f.text_field :last_name
+            .field
+              = f.label :salutation
+              <br>
+              = f.text_field :salutation
+            .field
+              = f.label :uname, "Identikey Username"
+              <br>
+              = f.text_field :uname
+          .col-md-4.col-md-offset-2
+            .field
+              = f.check_box :mailing_list
+              = f.label :mailing_list, "Add to Mailing List"
+            .field
+              = f.check_box :formally_affiliated
+              = f.label :formally_affiliated, "Person is a grad-student or something"
+            .field
+              = f.check_box :retiree
+              = f.label :retiree, "Person is a retiree of IBS"
+            .field
+              = f.check_box :rostered
+              = f.label :rostered, "Person is officially rostered"
+      #tab2.tab-pane
+        %h3.text-center About Personnel
+        .field
+          = f.label :bio
+          <br>
+          = f.text_area :bio
+        .field
+          = f.label :research_interests
+          <br>
+          = f.text_area :research_interests
+        .field
+          = f.label :skills_expertise
+          <br>
+          = f.text_area :skills_expertise
+        .field
+          = f.label :notes
+          <br>
+          = f.text_area :notes
+      #tab3.tab-pane
+        %h3.text-center Employee Information
+        .field
+          = f.label :employee_id, "Employee/Staff Id"
+          = f.text_field :employee_id
+        = f.fields_for :employment_records do |er_form|
+          .field
+            = er_form.label :position_id, "Employee's Position"
+            = er_form.collection_select :position_id, Position.order(:title), :id, :title
+          .field
+            = er_form.label :affiliation_id, "Affiliation"
+            = er_form.collection_select :affiliation_id, Affiliation.order(:institute_name), :id, :institute_name
+          .field
+            = er_form.label :start_date, "Started Employment"
+            = er_form.date_select :start_date, order: [:month, :year], start_year: 1995
+          .field
+            = er_form.label :end_date, "End Employment (If any)"
+            = er_form.date_select :end_date, order: [:month, :year], include_blank: true
+          = er_form.link_to_remove "Delete Employee Record"
+        = f.link_to_add "Add another employement record", :employment_records
+      #tab4.tab-pane
+        %h3.text-center Academic Information
+        = f.fields_for :websites do |web_form|
+          .field
+            = web_form.label :url
+            = web_form.text_field :url
+          .field
+            = web_form.label :display_name
+            = web_form.text_field :display_name
+          .field
+            = web_form.label :website_type_id, "Type of Website"
+            = web_form.collection_select :website_type_id, WebsiteType.order(:web_type), :id, :web_type
+            = web_form.link_to_remove "Delete Website"
+        = f.link_to_add "Add another website record", :websites
+        = f.fields_for :academic_degrees do |ac_form|
+          .field
+            = ac_form.label :degree_type_id, "Type of Degree"
+            = ac_form.collection_select :degree_type_id, DegreeType.order(:degree_type), :id, :degree_type
+          .field
+            = ac_form.label :year_awarded, "Year Awarded"
+            = ac_form.text_field :year_awarded
+          OR
+          .field
+            = ac_form.check_box :in_progress
+            = ac_form.label :in_progress
+          .field
+            = ac_form.label :university
+            = ac_form.text_field :university
+          .field
+            = ac_form.label :department
+            = ac_form.text_field :department
+          = ac_form.link_to_remove "Delete Academic Degree"
+        = f.link_to_add "Add another academic degree", :academic_degrees
+      #tab5.tab-pane
+        %h3.text-center Professional and Personal Contact
+        = f.fields_for :contact_details do |cd_form|
+          .field
+            = cd_form.label :job_title
+            = cd_form.text_field :job_title
+          .field
+            = cd_form.label :organization
+            = cd_form.text_field :organization
+          .field
+            = cd_form.label :address
+            <br>
+            = cd_form.text_area :address
+          .field
+            = cd_form.label :city
+            = cd_form.text_field :city
+          .field
+            = cd_form.label :state
+            = cd_form.text_field :state
+          .field
+            = cd_form.label :country
+            = cd_form.text_field :country
+          .field
+            = cd_form.label :zipcode
+            = cd_form.text_field :zipcode
+          .field
+            = cd_form.label :phone
+            = cd_form.text_field :phone
+          .field
+            = cd_form.label :email
+            = cd_form.text_field :email
+          .field
+            = cd_form.label :alt_phone
+            = cd_form.text_field :alt_phone
+          .field
+            = cd_form.label :alt_email
+            = cd_form.text_field :alt_email
+          = cd_form.link_to_remove "Delete Contact Details"
+        = f.link_to_add "Add another contact details form", :contact_details
+        = f.fields_for :contact_infos do |ci_form|
+          .field
+            = ci_form.check_box :display
+            = ci_form.label :display
+          .field
+            = ci_form.label :office_number
+            = ci_form.text_field :office_number
+          .field
+            = ci_form.label :phone_number
+            = ci_form.text_field :phone_number
+          .field
+            = ci_form.label :email
+            = ci_form.text_field :email
+          = ci_form.link_to_remove "Delete Contact Info"
 
-  = f.link_to_add "add another contact info form", :contact_infos
-  .actions
-    = f.submit 'Save'
+        = f.link_to_add "add another contact info form", :contact_infos
+      .actions
+        = f.submit 'Save'
