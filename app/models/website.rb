@@ -17,5 +17,4 @@ class Website < ActiveRecord::Base
 
   validates :url, presence: :true
   validates :website_type_id, presence: :true
-  validates :personnel_id, presence: :true
 end

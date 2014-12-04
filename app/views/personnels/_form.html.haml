@@ -1,4 +1,4 @@
-= nested_form_for @personnel do |f|
+= nested_form_for @personnel, url: {action: (@personnel.new_record? ? "create" : "update") } do |f|
   - if @personnel.errors.any?
     #error_explanation
       %h2= "#{pluralize(@personnel.errors.count, "error")} prohibited this personnel from being saved:"
@@ -104,6 +104,7 @@
           .field
             = web_form.label :website_type_id, "Type of Website"
             = web_form.collection_select :website_type_id, WebsiteType.order(:web_type), :id, :web_type
+            %br
             = web_form.link_to_remove "Delete Website"
         = f.link_to_add "Add another website record", :websites
         = f.fields_for :academic_degrees do |ac_form|
@@ -178,7 +179,11 @@
             = ci_form.label :email
             = ci_form.text_field :email
           = ci_form.link_to_remove "Delete Contact Info"
-
         = f.link_to_add "add another contact info form", :contact_infos
+      %ul.pager.wizard
+        %li.previous
+          %a{href:"#"}Previous
+        %li.next
+          %a{href:"#"}Next
       .actions
         = f.submit 'Save'

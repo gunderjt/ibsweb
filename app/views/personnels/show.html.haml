@@ -40,6 +40,6 @@
   %b Employee:
   = @personnel.employee_id
 
-= link_to 'Edit', edit_personnel_path(@personnel)
+= link_to 'Edit', edit_personnel_path(@personnel.uname)
 \|
 = link_to 'Back', personnels_path

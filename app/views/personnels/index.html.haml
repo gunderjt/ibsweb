@@ -2,41 +2,19 @@
 
 %table
   %tr
-    %th Uname
-    %th Mailing list
-    %th Formally affiliated
-    %th Retiree
-    %th Rostered
     %th First name
     %th Last name
-    %th Salutation
-    %th Notes
-    %th Research interests
-    %th Skills expertise
-    %th Bio
-    %th Employee
     %th
     %th
     %th
 
   - @personnels.each do |personnel|
     %tr
-      %td= personnel.uname
-      %td= personnel.mailing_list
-      %td= personnel.formally_affiliated
-      %td= personnel.retiree
-      %td= personnel.rostered
       %td= personnel.first_name
       %td= personnel.last_name
-      %td= personnel.salutation
-      %td= personnel.notes
-      %td= personnel.research_interests
-      %td= personnel.skills_expertise
-      %td= personnel.bio
-      %td= personnel.employee_id
-      %td= link_to 'Show', personnel
-      %td= link_to 'Edit', edit_personnel_path(personnel)
-      %td= link_to 'Destroy', personnel, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', personnel_path(personnel.uname)
+      %td= link_to 'Edit', edit_personnel_path(personnel.uname)
+      %td= link_to 'Destroy', personnel.uname, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

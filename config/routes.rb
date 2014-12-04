@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/visit', to: 'static_pages#visit'
 
-  resources :personnels
+  resources :personnels, param: :uname
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
