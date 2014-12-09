@@ -67,6 +67,13 @@ end
 
 gem "awesome_print"
 gem "haml-rails"
+# user security
 gem "devise"
+# for Nested_forms
 gem "nested_form"
+# Documentation
 gem 'annotate', '~> 2.6.5'
+# For images/ need imagemagick
+#sudo apt-get install imagemagick php5-imagick
+gem 'paperclip', "~> 4.2"
+

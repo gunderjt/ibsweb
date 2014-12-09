@@ -1,5 +1,6 @@
 %p#notice= notice
 
+= image_tag @personnel.avatar.url(:medium) if @personnel.avatar.exists?
 %p
   %b Uname:
   = @personnel.uname

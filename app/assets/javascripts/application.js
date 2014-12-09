@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery_nested_form
-//= require jquery.bootstrap.wizard
+//= require jquery.bootstrap.wizard.min
+//= require fileinput.min
 //= require_tree .

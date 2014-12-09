@@ -27,13 +27,12 @@ class PersonnelsController < ApplicationController
 
   def create
     @personnel = Personnel.new(personnel_params)
-    binding.pry
     @personnel.save
     respond_with(@personnel)
   end
 
   def update
-    binding.pry
+    #binding.pry
     @personnel.update(personnel_params)
     respond_with(@personnel, location: personnel_path(@personnel.uname))
   end
@@ -49,8 +48,8 @@ class PersonnelsController < ApplicationController
     end
 
     def personnel_params
-      params.require(:personnel).permit(:uname, :mailing_list,
-      :formally_affiliated, :retiree, :rostered, :first_name, :last_name, 
+      params.require(:personnel).permit(:uname, :mailing_list, :delete_image,
+      :formally_affiliated, :retiree, :rostered, :first_name, :last_name, :avatar, 
       :salutation, :notes, :research_interests, :skills_expertise, :bio, :employee_id, 
       employment_records_attributes: [:id, :position_id, :affiliation_id, :start_date, :end_date, :_destroy],
       websites_attributes: [:id, :_destroy, :website_type_id, :url, :display_name],
