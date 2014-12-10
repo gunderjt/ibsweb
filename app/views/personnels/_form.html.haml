@@ -54,18 +54,19 @@
             .field
               = f.check_box :rostered
               = f.label :rostered, "Person is officially rostered"
-          .col-md-3
+          .col-md-5
             .field
               = f.label :avatar, "Image"
               %br
-              = f.file_field :avatar, accept: 'image/png,image/jpeg'
-              / = f.file_field :avatar, accept: 'image/png,image/jpeg', class: "file", :"data-show-upload" => "false", :"data-show-caption" => "true"
-              - if @personnel.avatar.exists?
-                = image_tag @personnel.avatar.url(:medium) unless @personnel.avatar.blank?
-                = f.check_box :delete_image
-                = f.label :delete_image, "Delete?"
+              /%input#personnel_avater{accept:"image/png,image/jpeg", name:"personnel[avatar]", type:"file", class: "file", :"data-show-upload" => "false", :"data-show-caption" => "true"}
+              = f.file_field :avatar, accept: 'image/png,image/jpeg', class: "file", :"data-show-upload" => "false", :"data-show-caption" => "true"
+              / - if @personnel.avatar.exists?
+              /   = image_tag @personnel.avatar.url(:medium) unless @personnel.avatar.blank?
+              /   = f.check_box :delete_image
+              /   = f.label :delete_image, "Delete?"
       #tab2.tab-pane
         %h3.text-center About Personnel
+
         .field
           = f.label :bio
           <br>

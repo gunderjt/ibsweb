@@ -76,4 +76,3 @@ gem 'annotate', '~> 2.6.5'
 # For images/ need imagemagick
 #sudo apt-get install imagemagick php5-imagick
 gem 'paperclip', "~> 4.2"
-
