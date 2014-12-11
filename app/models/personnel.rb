@@ -24,7 +24,7 @@ class Personnel < ActiveRecord::Base
   attr_accessor :delete_image
   before_save :remove_image
 
-  has_attached_file :avatar, :styles => { :large => "500x500>", :medium => "300x300>", :thumb => "100x100>"}, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :large => "500x500>", :medium => "300x300>", :thumb => "100x100>"}, :default_url => "default_user.jpg"
 
   has_many :employment_records, dependent: :destroy
   has_many :academic_degrees, dependent: :destroy

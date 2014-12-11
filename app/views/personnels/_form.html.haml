@@ -58,8 +58,9 @@
             .field
               = f.label :avatar, "Image"
               %br
-              /%input#personnel_avater{accept:"image/png,image/jpeg", name:"personnel[avatar]", type:"file", class: "file", :"data-show-upload" => "false", :"data-show-caption" => "true"}
-              = f.file_field :avatar, accept: 'image/png,image/jpeg', class: "file", :"data-show-upload" => "false", :"data-show-caption" => "true"
+              / = image_tag @personnel.avatar.url(:medium), class: "personnel_image"
+              = f.file_field :avatar, accept: 'image/png,image/jpeg', class: "personnel_image"
+
               / - if @personnel.avatar.exists?
               /   = image_tag @personnel.avatar.url(:medium) unless @personnel.avatar.blank?
               /   = f.check_box :delete_image
