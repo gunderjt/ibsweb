@@ -60,11 +60,9 @@
               %br
               / = image_tag @personnel.avatar.url(:medium), class: "personnel_image"
               = f.file_field :avatar, accept: 'image/png,image/jpeg', class: "personnel_image"
-
-              / - if @personnel.avatar.exists?
-              /   = image_tag @personnel.avatar.url(:medium) unless @personnel.avatar.blank?
-              /   = f.check_box :delete_image
-              /   = f.label :delete_image, "Delete?"
+              / determine if the image should be deleted
+              = f.hidden_field :delete_image, value: "0"
+              
       #tab2.tab-pane
         %h3.text-center About Personnel
 
@@ -199,3 +197,14 @@
           %a{href:"#"}Next
       .actions
         = f.submit 'Save'
+:coffee
+  -# This is here because javascript files served from the asset folder do not have
+  -# Access to controller class instance variables
+
+  img_source = "#{defined?(@personnel) && @personnel.avatar.exists? ? @personnel.avatar.url(:medium) : image_url('default_user.jpg')}"
+  $(".personnel_image").fileinput initialPreview: ["<img src='"+img_source+"' class=\'file-preview-image\' alt=\'Avatar\' title=\'Avatar\'>"], showUpload: false
+  
+  $('.personnel_image').on 'filecleared', (event) -> 
+    $('#personnel_delete_image').val "1"
+  $('.personnel_image').on 'fileloaded', (event) -> 
+    $('#personnel_delete_image').val "0"
