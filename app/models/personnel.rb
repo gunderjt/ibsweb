@@ -44,6 +44,9 @@ class Personnel < ActiveRecord::Base
   accepts_nested_attributes_for :contact_infos, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :websites, reject_if: lambda { |a| a[:url].blank? }, allow_destroy: true
 
+  def full_name
+    self.first_name + " " + self.last_name
+  end
 
   private
   

@@ -14,4 +14,8 @@
 
 class ContactInfo < ActiveRecord::Base
   belongs_to :personnel
+
+  alias_attribute :phone, :phone_number
+  alias_attribute :display?, :display
+  
 end

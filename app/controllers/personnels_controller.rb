@@ -8,7 +8,7 @@ class PersonnelsController < ApplicationController
   end
 
   def show
-    respond_with(@personnel)
+    respond_with(@personnel, location: personnel_path(@personnel.uname))
   end
 
   def new
@@ -28,7 +28,7 @@ class PersonnelsController < ApplicationController
   def create
     @personnel = Personnel.new(personnel_params)
     @personnel.save
-    respond_with(@personnel)
+    respond_with(@personnel, location: personnel_path(@personnel.uname))
   end
 
   def update
