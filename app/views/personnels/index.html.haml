@@ -1,6 +1,6 @@
-%h1 Listing personnels
+%h1.text-center IBS Directory
 
-%table
+%table.table.table-striped
   %tr
     %th Name
     %th Email
@@ -10,7 +10,7 @@
 
   - @personnels.each do |personnel|
     %tr
-      %td= personnel.full_name
+      %td= link_to personnel.full_name, personnel_path(personnel.uname)
       %td
         - personnel.contact_infos.each do |ci|
           = ci.email if ci.display?
@@ -18,10 +18,12 @@
         - personnel.contact_infos.each do |ci|
           = ci.phone if ci.display?
       %td
-        - personnel.employment_records.each do |er|
-          = er.position.title + ', ' + link_to(er.affiliation.institute_name, er.affiliation.website)
+        - personnel.employment_records.each_with_index do |er, index|
+          #{er.position.title}, #{link_to(er.affiliation.institute_name, er.affiliation.website_url)}
+          - unless index == (personnel.employment_records.size-1)
+            %br
 
-      %td #{link_to 'Show', personnel_path(personnel.uname)} | #{link_to 'Edit', edit_personnel_path(personnel.uname)} | #{link_to 'Destroy', personnel.uname, :method => :delete, :data => { :confirm => 'Are you sure?' }}
+      / %td #{link_to 'Show', personnel_path(personnel.uname)} | #{link_to 'Edit', edit_personnel_path(personnel.uname)} | #{link_to 'Destroy', personnel.uname, :method => :delete, :data => { :confirm => 'Are you sure?' }}
 
 
 %br

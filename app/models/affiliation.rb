@@ -18,4 +18,9 @@ class Affiliation < ActiveRecord::Base
   has_many :employment_records
 
   validates :institute_name, presence: :true, uniqueness: true
+
+  def website_url
+    #binding.pry
+    self.website || Rails.application.routes.url_helpers.affiliation_path(self.id)
+  end
 end
