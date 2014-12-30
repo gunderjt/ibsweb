@@ -1,0 +1,39 @@
+= form_for @article do |f|
+  - if @article.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
+      %ul
+        - @article.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :image, "Article Image"
+    %br
+    = f.file_field :image, accept: 'image/png,image/jpeg', class: "article_image"
+    = f.hidden_field :delete_image, value: "0"
+  .field
+    = f.label :date_of_article
+    = f.date_select :date_of_article, order: [:month, :day, :year]
+  .actions
+    = f.submit 'Save'
+
+:coffee
+  -# This is here because javascript files served from the asset folder do not have
+  -# Access to controller class instance variables
+  options = {}
+  if #{@article.image.exists?}
+    options["initialPreview"] = ["<img src='#{@article.image.url(:large)}' class=\'file-preview-image\' alt=\'Article Image\' title=\'Image\'>"]
+
+  options["showUpload"] = false
+  $(".article_image").fileinput options
+  
+  $('.article_image').on 'filecleared', (event) -> 
+    $('#article_delete_image').val "1"
+  $('.article_image').on 'fileloaded', (event) -> 
+    $('#article_delete_image').val "0"
