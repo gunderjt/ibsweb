@@ -1,23 +1,11 @@
-%h1 Listing articles
-
-%table
-  %tr
-    %th Title
-    %th Body
-    %th Date of article
-    %th
-    %th
-    %th
-
-  - @articles.each do |article|
-    %tr
-      %td= article.title
-      %td= article.body
-      %td= article.date_of_article
-      %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+%h1.text-center Institute of Behavioral Science
+- @articles.each do |article|
+  .clearfix
+    %h3.text-center
+      = link_to article.title, article
+    = article.date_of_article.strftime("%B %-d, %Y")
+    %br
+    = image_tag article.image.url(:large), class: "pull-left" if article.image.exists?
+    = article.body
 %br
-
 = link_to 'New Article', new_article_path
